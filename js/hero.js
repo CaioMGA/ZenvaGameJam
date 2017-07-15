@@ -5,8 +5,18 @@ function createHero(x, y, _speed){
 		"walking" : false,
 		"speed":_speed,
 		"direction" : {"x":1, "y":0},
-		"target":{"x":0, "y":0},
-		"sprite" : "",
+		"target":{"x":0, "y":0, "sprite": null,
+			"show":function(){ this.sprite.visible = true; this.sprite.animations.play("valid");},
+			"hide":function(){ this.sprite.visible = false;},
+	},
+		"sprite" : null,
+		"createTarget": function(){
+			this.target.sprite = game.add.sprite(0, 0, 'targetIndicator', 0);
+			this.target.sprite.anchor.setTo(0.5, 0.5);
+			this.target.sprite.animations.add('valid', [2, 3, 4], 8, true);
+			this.target.sprite.animations.add('invalid', [0, 1], 8, true);
+			this.target.hide();
+		},
 		"createAnimations" :function(){
 			this.sprite = game.add.sprite(x, y, 'hero_spritesheet', 10);
 			this.sprite.anchor.setTo(0.5, 0.5);
@@ -35,6 +45,7 @@ function createHero(x, y, _speed){
 			this.sprite.animations.play('walkDown');
 		},
 		"stop" : function(){
+			this.walking = false;
 			this.sprite.animations.play('idle');
 		},
 		"victory" : function(){
@@ -45,33 +56,52 @@ function createHero(x, y, _speed){
 		},
 		"move" : function(){
 			if(this.walking){
-		        game.physics.arcade.moveToXY(this.sprite, this.target.x, this.target.y,this.speed);
-		        if(Phaser.Math.distance(this.sprite.x, this.sprite.y, this.target.x, this.target.y) < 8){
-		            this.sprite.x = this.target.x;
-		            this.sprite.y = this.target.y;
+		        game.physics.arcade.moveToXY(this.sprite, this.target.sprite.x, this.target.sprite.y,this.speed);
+		        if(Phaser.Math.distance(this.sprite.x, this.sprite.y, this.target.sprite.x, this.target.sprite.y) < 8){
+		            this.sprite.x = this.target.sprite.x;
+		            this.sprite.y = this.target.sprite.y;
 		            this.walking = false;
 		            this.sprite.body.velocity.setTo(0, 0);
 		            this.stop();
+		            this.target.hide();
 		        }
 	    	}
 		},
 		"setTarget" : function (x, y){
-			this.target = {'x': x, 'y': y};
+			if(x > game.world.width - 16){
+				x = game.world.width - 16;
+			} else if(x < 16){
+				x = 16;
+			}
+
+			if(y > game.world.height - 16){
+				y = game.world.height - 16;
+			} else if(y < 16){
+				y = 16;
+			}
+
+			this.target.sprite.x = x;
+			this.target.sprite.y = y;
 			this.walking = true;
-			console.log(this.target);
-			if(Math.abs(this.sprite.x - this.target.x) >= Math.abs(this.sprite.y - this.target.y)){
-				if(this.sprite.x > this.target.x){
+			this.target.show();
+
+			if(Math.abs(this.sprite.x - this.target.sprite.x) >= Math.abs(this.sprite.y - this.target.sprite.y)){
+				if(this.sprite.x > this.target.sprite.x){
 					this.walk(-1);
 				} else {
 					this.walk(1);
 				}
 			} else {
-				if(this.sprite.y > this.target.y){
+				if(this.sprite.y > this.target.sprite.y){
 					this.walkUp();
 				} else {
 					this.walkDown();
 				}
 			}
+		},
+		"init" : function(){
+			this.createAnimations();
+			this.createTarget();
 		}
 	};
 }
