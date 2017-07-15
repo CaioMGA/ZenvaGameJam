@@ -5,17 +5,10 @@ function createHero(x, y, _speed){
 		"walking" : false,
 		"speed":_speed,
 		"direction" : {"x":1, "y":0},
-		"target":{"x":0, "y":0, "sprite": null,
-			"show":function(){ this.sprite.visible = true; this.sprite.animations.play("valid");},
-			"hide":function(){ this.sprite.visible = false;},
-	},
+		"target":null,
 		"sprite" : null,
 		"createTarget": function(){
-			this.target.sprite = game.add.sprite(0, 0, 'targetIndicator', 0);
-			this.target.sprite.anchor.setTo(0.5, 0.5);
-			this.target.sprite.animations.add('valid', [2, 3, 4], 8, true);
-			this.target.sprite.animations.add('invalid', [0, 1], 8, true);
-			this.target.hide();
+			this.target = createTarget();
 		},
 		"createAnimations" :function(){
 			this.sprite = game.add.sprite(x, y, 'hero_spritesheet', 10);
@@ -68,22 +61,11 @@ function createHero(x, y, _speed){
 	    	}
 		},
 		"setTarget" : function (x, y){
-			if(x > game.world.width - 16){
-				x = game.world.width - 16;
-			} else if(x < 16){
-				x = 16;
-			}
-
-			if(y > game.world.height - 16){
-				y = game.world.height - 16;
-			} else if(y < 16){
-				y = 16;
-			}
-
-			this.target.sprite.x = x;
-			this.target.sprite.y = y;
+			//prevents target being created outside the game screen
+			
+			this.target.set(x, y);
 			this.walking = true;
-			this.target.show();
+			//
 
 			if(Math.abs(this.sprite.x - this.target.sprite.x) >= Math.abs(this.sprite.y - this.target.sprite.y)){
 				if(this.sprite.x > this.target.sprite.x){
@@ -102,6 +84,7 @@ function createHero(x, y, _speed){
 		"init" : function(){
 			this.createAnimations();
 			this.createTarget();
+			this.target.init();
 		}
 	};
 }

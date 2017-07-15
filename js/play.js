@@ -11,16 +11,7 @@ var playState = {
 		game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
 
         hero = createHero(0, 0, 200);
-        //hero.createAnimations();
         hero.init();
-
-        /*
-        cursor = game.add.sprite(100, 100, 'targetIndicator');
-        cursor.anchor.setTo(0.5, 0.5);
-        cursor.animations.add('valid', [4, 3, 2], 5, true);
-        cursor.animations.add('invalid', [0, 1], 4, true);
-        cursor.animations.play('valid');
-        */
 	},
 
     update: function(){
