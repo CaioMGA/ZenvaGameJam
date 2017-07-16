@@ -10,6 +10,25 @@ function createTarget(){
 		},
 		"set": function(x, y){
 			// prevent target draw outside game scene
+			tmpX = x % 32;
+			tmpY = y % 32;
+			newX = 0;
+			newY = 0;
+			if(tmpX > 16){
+				newX = (parseInt(x / 32) * 32 ) + 32;
+			} else {
+				newX = (parseInt(x / 32) * 32 );
+			}
+
+			if(tmpY > 16){
+				newY = (parseInt(y / 32) * 32 )+ 32;
+			} else {
+				newY = (parseInt(y / 32) * 32 );
+			}
+			newX += 16;
+			newY += 16;
+
+			/*
 			if(x > game.world.width - 16){
 				x = game.world.width - 16;
 			} else if(x < 16){
@@ -21,9 +40,10 @@ function createTarget(){
 			} else if(y < 16){
 				y = 16;
 			}
+			*/
 
-			this.sprite.x = x;
-			this.sprite.y = y;
+			this.sprite.x = newX;
+			this.sprite.y = newY;
 
 			this.show();
 		},

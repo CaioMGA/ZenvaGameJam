@@ -24,7 +24,7 @@ function createHero(x, y, _speed){
 			game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 
 		    this.sprite.body.collideWorldBounds = true;
-		    this.sprite.body.setCircle(16);
+		    this.sprite.body.setSize(20, 20, 6, 6); //tweak for better movement
 		    this.sprite.body.bounce.set(0.05);
 
 		},
