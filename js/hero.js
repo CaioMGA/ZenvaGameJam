@@ -19,10 +19,14 @@ function createHero(x, y, _speed){
 			this.sprite.animations.add('idle', [10], 8, false);
 			this.sprite.animations.add('idleUp', [7], 8, false);
 			this.sprite.animations.add('victory', [10, 16, 10, 16, 10, 16], 5, false);
-		    this.sprite.animations.add('death', [0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6], 8, false);
+		    this.sprite.animations.add('death', [0, 1, 2, 3, 0, 1, 2, 3, 4, 5, 6], 10, false);
 		    this.sprite.animations.play('idle');
 			game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
+
 		    this.sprite.body.collideWorldBounds = true;
+		    this.sprite.body.setCircle(16);
+		    this.sprite.body.bounce.set(0.05);
+
 		},
 		"death" : function(){
 			this.sprite.animations.play('death');
@@ -49,7 +53,7 @@ function createHero(x, y, _speed){
 		},
 		"move" : function(){
 			if(this.walking){
-		        game.physics.arcade.moveToXY(this.sprite, this.target.sprite.x, this.target.sprite.y,this.speed);
+		        game.physics.arcade.moveToXY(this.sprite, this.target.sprite.x, this.target.sprite.y,this.speed, 0);
 		        if(Phaser.Math.distance(this.sprite.x, this.sprite.y, this.target.sprite.x, this.target.sprite.y) < 8){
 		            this.sprite.x = this.target.sprite.x;
 		            this.sprite.y = this.target.sprite.y;
@@ -88,3 +92,5 @@ function createHero(x, y, _speed){
 		}
 	};
 }
+
+
