@@ -7,5 +7,5 @@ var loadState = {
 		game.load.spritesheet("targetIndicator", "img/cursorIcons.png", 32, 32);
 
 		game.state.start("play");
-	},
+	}
 };
