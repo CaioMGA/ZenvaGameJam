@@ -1,8 +1,8 @@
 
-function createHero(x, y, _speed){
+function createHero(_x, _y, _speed){
 	return {
 		"alive":true,
-		"walking" : false,
+		"moving" : false,
 		"speed":_speed,
 		"direction" : {"x":1, "y":0},
 		"target":null,
@@ -11,7 +11,7 @@ function createHero(x, y, _speed){
 			this.target = createTarget();
 		},
 		"createAnimations" :function(){
-			this.sprite = game.add.sprite(x, y, 'hero_spritesheet', 10);
+			this.sprite = game.add.sprite(_x, _y, 'hero_spritesheet', 10);
 			this.sprite.anchor.setTo(0.5, 0.5);
 			this.sprite.animations.add('walkH', [13, 14 ,15, 14], 8, true);
 			this.sprite.animations.add('walkUp', [7, 8, 7, 9], 8, true);
@@ -42,7 +42,7 @@ function createHero(x, y, _speed){
 			this.sprite.animations.play('walkDown');
 		},
 		"stop" : function(){
-			this.walking = false;
+			this.moving = false;
 			this.sprite.animations.play('idle');
 		},
 		"victory" : function(){
@@ -52,23 +52,23 @@ function createHero(x, y, _speed){
 			this.move();
 		},
 		"move" : function(){
-			if(this.walking){
+			if(this.moving){
 		        game.physics.arcade.moveToXY(this.sprite, this.target.sprite.x, this.target.sprite.y,this.speed, 0);
 		        if(Phaser.Math.distance(this.sprite.x, this.sprite.y, this.target.sprite.x, this.target.sprite.y) < 8){
 		            this.sprite.x = this.target.sprite.x;
 		            this.sprite.y = this.target.sprite.y;
-		            this.walking = false;
+		            this.moving = false;
 		            this.sprite.body.velocity.setTo(0, 0);
 		            this.stop();
 		            this.target.hide();
 		        }
 	    	}
 		},
-		"setTarget" : function (x, y){
+		"setTarget" : function (_x, _y){
 			//prevents target being created outside the game screen
 			
-			this.target.set(x, y);
-			this.walking = true;
+			this.target.set(_x, _y);
+			this.moving = true;
 			//
 
 			if(Math.abs(this.sprite.x - this.target.sprite.x) >= Math.abs(this.sprite.y - this.target.sprite.y)){
