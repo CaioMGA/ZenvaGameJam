@@ -10,41 +10,53 @@ var playState = {
 		game.stage.backgroundColor = '#440044';
 		game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
 
-        hero = createHero(0, 0, 200);
+        map = game.add.tilemap("map");
+        map.addTilesetImage("tileset", "tiles"); //Tileset name inside TILED, image key on Phaser
+
+        floor = map.createLayer('floor');
+        walls = map.createLayer('walls');
+
+        map.setCollisionBetween(1, 10000, true, 'walls');
+        floor.resizeWorld();
+        //640 x 360 resolution has a sprite count of 40 x 22,5
+        //so I made the tilemap bigger and adjusted the camera for a better presentation
+        game.camera.x = 8;
+        game.camera.y = 12;
+        hero = createHero(64, 64, 200);
         hero.init();
 
-        box = game.add.sprite(150, 150, "box");
-        game.physics.enable(box, Phaser.Physics.ARCADE);
-        box.body.immovable = true;
 	},
 
     update: function(){
         hero.update();
+
         if (game.input.mousePointer.isDown) {
             hero.setTarget(game.input.mousePointer.x, game.input.mousePointer.y);
         }
 
-        game.physics.arcade.collide(box, hero.sprite, collisionHandler, null, this);
+        
+        game.physics.arcade.collide(hero.sprite, walls, collisionHandler, null, this);
+
     },
      render: function () {
 
-        game.debug.body(hero.sprite);
-        game.debug.body(box);
+        //game.debug.body(hero.sprite);
+        //game.debug.body(walls.bodies);
     }
 };
 
 function collisionHandler(){
     //prevent hero avatar from getting stuck on corners
     kick = 0.4;
-    if(box.x < hero.sprite.x && hero.target.sprite.x > hero.sprite.x){
+    if(hero.sprite.body.blocked.left && hero.target.sprite.x > hero.sprite.x){
         hero.sprite.x += kick; //KICK right
-    } else if(box.x > hero.sprite.x && hero.target.sprite.x < hero.sprite.x){
+    } else if(hero.sprite.body.blocked.right && hero.target.sprite.x < hero.sprite.x){
         hero.sprite.x -= kick; //KICK left
     }
 
-    if(box.y < hero.sprite.y && hero.target.sprite.y > hero.sprite.y){
+    if(hero.sprite.body.blocked.up && hero.target.sprite.y > hero.sprite.y){
         hero.sprite.y += kick; //KICK down
-    } else if(box.y > hero.sprite.y && hero.target.sprite.y < hero.sprite.y){
+    } else if(hero.sprite.body.blocked.down && hero.target.sprite.y < hero.sprite.y){
         hero.sprite.y -= kick; //KICK up
     }
 }
