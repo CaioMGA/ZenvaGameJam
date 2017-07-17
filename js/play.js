@@ -31,6 +31,7 @@ var playState = {
         mirrorWalker = createEnemyMirrorWalker(hero, "both");
         mirrorWalker.init();
         game.input.addPointer();
+        createMenuOverlay();
 
 	},
 
@@ -45,9 +46,8 @@ var playState = {
             hero.setTarget(game.input.pointer1.x, game.input.pointer1.y);
         }
 
-        
         game.physics.arcade.collide(hero.sprite, walls, collisionHandler, null, this);
-                game.physics.arcade.collide(mirrorWalker.sprite, walls);
+        game.physics.arcade.collide(mirrorWalker.sprite, walls);
 
     },
      render: function () {

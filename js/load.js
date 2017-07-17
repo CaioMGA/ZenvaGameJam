@@ -7,6 +7,9 @@ var loadState = {
 		game.load.spritesheet("enemy_bullet", "img/enemy_bullet.png", 46, 32);
 		game.load.spritesheet("enemy_mirror_walk", "img/enemy_mirror_walk.png", 32, 32);
 
+		game.load.spritesheet("button", "img/small_button.png", 32, 32);
+		game.load.spritesheet("icons", "img/icons.png", 32, 32);
+
 		game.load.tilemap("map", "misc/map1.json", null, Phaser.Tilemap.TILED_JSON);
 		game.load.image("tiles", "img/tiles_purple.png");
 
