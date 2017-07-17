@@ -25,22 +25,36 @@ var playState = {
         hero = createHero(64, 64, 200);
         hero.init();
 
+        enemy = createEnemyBullet(200, 200, 100);
+        enemy.createAnimations();
+
+        mirrorWalker = createEnemyMirrorWalker(hero, "both");
+        mirrorWalker.init();
+        game.input.addPointer();
+
 	},
 
     update: function(){
         hero.update();
+        mirrorWalker.update();
 
         if (game.input.mousePointer.isDown) {
             hero.setTarget(game.input.mousePointer.x, game.input.mousePointer.y);
         }
+        if (game.input.pointer1.isDown) {
+            hero.setTarget(game.input.pointer1.x, game.input.pointer1.y);
+        }
 
         
         game.physics.arcade.collide(hero.sprite, walls, collisionHandler, null, this);
+                game.physics.arcade.collide(mirrorWalker.sprite, walls);
 
     },
      render: function () {
 
         //game.debug.body(hero.sprite);
+        //game.debug.body(mirrorWalker.sprite);
+        //game.debug.pointer(game.input.pointer1);
         //game.debug.body(walls.bodies);
     }
 };
