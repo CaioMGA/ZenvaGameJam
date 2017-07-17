@@ -3,7 +3,12 @@ CREDITS
 ============Sprites============
 Kenney Game Assets
     Abstract Platformer Pack
-    Red Player (Edited by Caio Marchi)
+    - Red Player (Edited by Caio Marchi)
+    - Enemy Walking (Edited by Caio Marchi)
+
+    Rogue-like Pack
+
+    Game icons
 
 ============Sounds============
 
