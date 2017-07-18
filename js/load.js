@@ -13,6 +13,9 @@ var loadState = {
 		game.load.tilemap("map", "misc/map1.json", null, Phaser.Tilemap.TILED_JSON);
 		game.load.image("tiles", "img/tiles_purple.png");
 
+	},
+	create: function(){
 		game.state.start("play");
 	}
+
 };
