@@ -7,9 +7,6 @@ var playState = {
             Phaser.Keyboard.RIGHT,
             Phaser.Keyboard.SPACEBAR]
         );
-		game.stage.backgroundColor = '#440044';
-		game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
-
         map = game.add.tilemap("map");
         map.addTilesetImage("tileset", "tiles"); //Tileset name inside TILED, image key on Phaser
 
@@ -22,15 +19,15 @@ var playState = {
         //so I made the tilemap bigger and adjusted the camera for a better presentation
         game.camera.x = 8;
         game.camera.y = 12;
+
         hero = createHero(64, 64, 200);
         hero.init();
-
         enemy = createEnemyBullet(200, 200, 100);
         enemy.createAnimations();
-
         mirrorWalker = createEnemyMirrorWalker(hero, "both");
         mirrorWalker.init();
-        game.input.addPointer();
+
+        game.input.addPointer(); // touchscreen
         createMenuOverlay();
 
 	},
