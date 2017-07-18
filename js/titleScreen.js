@@ -23,6 +23,7 @@ var titleScreenState = {
 		txtAbout = game.add.text((game.world.width / 2), 280, "About", textStyle);
 		txtAbout.anchor.setTo(0.5, 0.5);
 		
+		createFullScreenButton();
 	}
 };
 

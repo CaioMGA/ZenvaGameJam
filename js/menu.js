@@ -1,6 +1,16 @@
 function createFullScreenButton () {
-	fullscreenBtn = game.add.button(608, 340, "button", fullScreenButton, this, 1,2,0);
-	fullscreenIcon = game.add.sprite(608, 340, "icons", 1);
+	fullscreenBtn = game.add.button(
+		game.camera.x + game.camera.width - 32,
+		game.camera.y + game.camera.height - 32,
+		"button",
+		fullScreenButton,
+		this,
+		1,2,0);
+	fullscreenIcon = game.add.sprite(
+		game.camera.x + game.camera.width - 32,
+		game.camera.y + game.camera.height - 32,
+		"icons",
+		1);
 	fullscreenIcon.tint = 0x9999ff;
 }
 
