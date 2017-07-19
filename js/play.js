@@ -26,7 +26,8 @@ var playState = {
         enemy.createAnimations();
         mirrorWalker = createEnemyMirrorWalker(hero, "both");
         mirrorWalker.init();
-
+        followHero = createEnemyFollowHero(320, 64, 100);
+        followHero.init();
         game.input.addPointer(); // touchscreen
         createMenuOverlay();
 
@@ -35,6 +36,7 @@ var playState = {
     update: function(){
         hero.update();
         mirrorWalker.update();
+        followHero.update();
 
         if (game.input.mousePointer.isDown) {
             hero.setTarget(game.input.mousePointer.x, game.input.mousePointer.y);
