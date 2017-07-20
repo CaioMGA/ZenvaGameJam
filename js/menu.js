@@ -47,6 +47,11 @@ function goBack(){
 
 }
 
+function showPrepareLevel(){
+	breadCrumbs.push(game.state.current);
+	game.state.start("prepareLevel");
+}
+
 function showPlay(){
 	breadCrumbs.push(game.state.current);
 	game.state.start("play");

@@ -9,6 +9,8 @@ function createEnemyFollowHero(_x, _y, _speed){
 		"moving" : false,
 		"createAnimations" :function(){
 			this.sprite = game.add.sprite(_x, _y, 'enemy_follow_hero', 0);
+			this.sprite.x += (this.sprite.width / 2);
+			this.sprite.y += (this.sprite.height / 2);
 			this.sprite.anchor.setTo(0.5, 0.5);
 			this.sprite.animations.add('move', [0, 1 ,2, 1], 8, true);
 			this.sprite.animations.add('idle', [3, 4, 5, 4], 14, false);

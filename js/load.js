@@ -12,7 +12,7 @@ var loadState = {
 		game.load.spritesheet("menu_button", "img/big_button.png", 276, 46);
 		game.load.spritesheet("icons", "img/icons.png", 32, 32);
 
-		game.load.tilemap("map", "misc/map1.json", null, Phaser.Tilemap.TILED_JSON);
+		game.load.tilemap("level1", "misc/1-1.json", null, Phaser.Tilemap.TILED_JSON);
 		game.load.image("tiles", "img/tiles_purple.png");
 
 	},

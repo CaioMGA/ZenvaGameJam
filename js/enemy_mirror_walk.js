@@ -14,6 +14,8 @@ function createEnemyMirrorWalker(_hero, _mirrorAxis){
 		"createAnimations": function(){
 			this.sprite = game.add.sprite(0, 0, "enemy_mirror_walk");
 			this.sprite.anchor.setTo(0.5, 0.5);
+			this.sprite.x += (this.sprite.width / 2);
+			this.sprite.y += (this.sprite.height / 2);
 			this.sprite.animations.add("walkH", [7, 8, 9], 8, true);
 			this.sprite.animations.add("walkDown", [1, 2, 3, 2], 8, true);//inverse of hero animation
 			this.sprite.animations.add("walkUp", [4, 5, 6, 5], 8, true);//inverse of hero animation
@@ -48,7 +50,7 @@ function createEnemyMirrorWalker(_hero, _mirrorAxis){
 				this.sprite.body.velocity.setTo(0, 0);
 			}
 		},
-		"update":function(){
+		"update" : function(){
 			if(this.hero.sprite.animations.currentAnim != this.sprite.animations.currentAnim){
 				this.sprite.animations.play(this.hero.sprite.animations.currentAnim.name);
 			}

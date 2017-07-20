@@ -3,7 +3,7 @@ var titleScreenState = {
 		game.stage.backgroundColor = '#440044';
 		textStyle = { "font":"30px Arial", "fill":"#080808"};
 
-		btnPlay = game.add.button((game.world.width / 2), 100, "menu_button", showPlay, this, 1,2,0);
+		btnPlay = game.add.button((game.world.width / 2), 100, "menu_button", showPrepareLevel, this, 1,2,0);
 		btnPlay.anchor.setTo(0.5, 0.5);
 		txtPlay = game.add.text((game.world.width / 2), 100, "Play", textStyle);
 		txtPlay.anchor.setTo(0.5, 0.5);
