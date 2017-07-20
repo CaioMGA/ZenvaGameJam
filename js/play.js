@@ -30,7 +30,10 @@ var playState = {
         }
 
         game.physics.arcade.collide(hero.sprite, walls, collisionHandler, null, this);
-        game.physics.arcade.collide(mirrorWalkers[0].sprite, walls);
+        mirrorWalkers.forEach(function(item){
+            game.physics.arcade.collide(item.sprite, walls);
+        });
+//        game.physics.arcade.collide(mirrorWalkers[0].sprite, walls);
 
         //game.physics.arcade.collide(enemyMirrorWalkers, walls);
 
@@ -38,9 +41,8 @@ var playState = {
      render: function () {
 
         //game.debug.body(hero.sprite);
-        //game.debug.body(mirrorWalker.sprite);
         //game.debug.pointer(game.input.pointer1);
-        //game.debug.body(walls.bodies);
+        //enemies.forEach(function (item){game.debug.body(item.sprite)});
     }
 };
 
