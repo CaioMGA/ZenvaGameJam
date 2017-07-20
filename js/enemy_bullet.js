@@ -13,7 +13,7 @@ function createEnemyBullet(_x, _y, _speed){
 			this.sprite.animations.add("death", [3], 8, false);
 			this.sprite.animations.play("moving");
 			game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
-			this.sprite.body.setSize(28, 28, 3, 3);
+			this.sprite.body.setSize(24, 24, 16, 4);
 			this.sprite.visible = false;
 		},
 		"fire": function(_direction){
