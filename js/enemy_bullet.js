@@ -1,7 +1,7 @@
 function createEnemyBullet(_x, _y, _speed){
 	return {
 		"speed": _speed,
-		"direction" : {"x":0, "y":1},
+		"direction" : {"x":1, "y":0},
 		"moving" : false,
 		"sprite":null,
 		"createAnimations": function(){
@@ -14,16 +14,8 @@ function createEnemyBullet(_x, _y, _speed){
 			this.sprite.animations.play("moving");
 			game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 			this.sprite.body.setSize(24, 24, 16, 4);
+			this.sprite.body.velocity.x = this.speed;
 			this.sprite.visible = false;
-		},
-		"fire": function(_direction){
-			this.direction = _direction;
-			this.rotate();
-			this.sprite.visible = true;
-			this.moving = true;
-			this.sprite.body.velocity. x = this.direction.x * this.speed;
-			this.sprite.body.velocity. y = this.direction.y * this.speed;
-
 		},
 		"rotate": function(){
 			if(this.direction.x < 0){ // going left
@@ -52,6 +44,7 @@ function createEnemyBullet(_x, _y, _speed){
 		},
 		"init": function(){
 			this.createAnimations();
+			this.rotate();
 			this.sprite.visible = true;
 
 		}

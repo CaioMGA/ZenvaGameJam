@@ -36,7 +36,7 @@ var prepareLevelState = {
 		map.createFromObjects("Enemies", "bullet", "enemy_bullet", 0, true, false, tmpEnemies);
 		tmpEnemies.forEach(
 			function(item){
-				enemies.push(createEnemyBullet(item.position.x, item.position.y, hero.speed))
+				enemies.push(createEnemyBullet(item.position.x, item.position.y, 100))
 			});
         
 
@@ -49,6 +49,10 @@ var prepareLevelState = {
 				if(item.sprite.key == "enemy_mirror_walk"){
 					mirrorWalkers.push(item);
 				}
+				if(item.sprite.key == "enemy_bullet"){
+					bullets.push(item);
+				}
+
 			});
 	},
 	create: function(){

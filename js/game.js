@@ -12,6 +12,7 @@ var onScreenEnemies = [];
 var updatableObjects = []; //objects to be updated on play.update()
 var initiableObjects = []; //objects to be initialized
 var mirrorWalkers = [];
+var bullets = [];
 
 var breadCrumbs = []; // used to track menu navigation
 
