@@ -41,7 +41,7 @@ var playState = {
         //game.debug.body(hero.sprite);
         //game.debug.body(door.sprite);
         //game.debug.pointer(game.input.pointer1);
-        enemies.forEach(function (item){game.debug.body(item.sprite)});
+        //enemies.forEach(function (item){game.debug.body(item.sprite)});
 
     }
 };
