@@ -9,7 +9,7 @@ function createDoor(_x, _y){
 			this.sprite.animations.play('closed');
 			game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 
-			this.sprite.body.setSize(32, 45, 0, -5);
+			this.sprite.body.setSize(40, 45, -5, -5);
 		},
 		"open" : function(){
 			this.sprite.animations.play("opened");
