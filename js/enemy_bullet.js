@@ -4,6 +4,7 @@ function createEnemyBullet(_x, _y, _speed){
 		"direction" : {"x":1, "y":0},
 		"moving" : false,
 		"sprite":null,
+		"alive": true,
 		"createAnimations": function(){
 			this.sprite = game.add.sprite(_x, _y, "enemy_bullet");
 			this.sprite.x += (this.sprite.width / 2);
@@ -46,7 +47,10 @@ function createEnemyBullet(_x, _y, _speed){
 			this.createAnimations();
 			this.rotate();
 			this.sprite.visible = true;
-
+		},
+		"death": function(){
+			this.animations.play("death");
+			this.alive = false;
 		}
 	}
 }

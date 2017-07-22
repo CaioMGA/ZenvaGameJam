@@ -10,9 +10,10 @@ var playState = {
         createScenary();
         enemies.forEach(function(item){console.log(item.sprite.key); item.init()});
         hero.init();
-
+        door.init();
         game.input.addPointer(); // touchscreen
         createMenuOverlay();
+        transitioningLevels = false;
 
 	},
 
@@ -29,25 +30,19 @@ var playState = {
             hero.setTarget(game.input.pointer1.x, game.input.pointer1.y);
         }
 
-        game.physics.arcade.collide(hero.sprite, walls, collisionHandler, null, this);
-        mirrorWalkers.forEach(function(item){
-            game.physics.arcade.collide(item.sprite, walls);
-        });
-
-        bullets.forEach(function(item){
-            game.physics.arcade.collide(item.sprite, walls, function(){item.turn()}, null, this);
-        });
-
-//        game.physics.arcade.collide(mirrorWalkers[0].sprite, walls);
-
-        //game.physics.arcade.collide(enemyMirrorWalkers, walls);
+        updateCollisions();
+        if(enemiesLeft < 1){
+            door.open();
+        }
 
     },
      render: function () {
 
         //game.debug.body(hero.sprite);
+        //game.debug.body(door.sprite);
         //game.debug.pointer(game.input.pointer1);
         enemies.forEach(function (item){game.debug.body(item.sprite)});
+
     }
 };
 
@@ -90,4 +85,71 @@ function createScenary(){
     //so I made the tilemap bigger and adjusted the camera for a better presentation
     game.camera.x = 8;
     game.camera.y = 12;
+}
+
+function updateCollisions(){
+    game.physics.arcade.collide(hero.sprite, walls, collisionHandler, null, this);
+    mirrorWalkers.forEach(function(item){
+        if(item.alive){
+            game.physics.arcade.collide(item.sprite, walls);
+        }
+    });
+
+    bullets.forEach(function(item){
+        game.physics.arcade.collide(item.sprite, walls, function(){item.turn()}, null, this);
+    });
+
+    if(door.opened){
+        game.physics.arcade.collide(door.sprite, hero.sprite, nextLevel, null, this);
+    }
+
+    // Enemies colliding against themselves
+    enemies.forEach(function (item1){
+        enemies.forEach(function(item2){
+            if(item1.alive && item2.alive){
+                game.physics.arcade.collide(item1.sprite, item2.sprite, function(){enemiesColliding(item1, item2)}, null, this);
+            }
+        });
+    });
+}
+
+function nextLevel(){
+    if(!transitioningLevels){
+        transitioningLevels = true;
+        curLevel++;
+        showPrepareLevel();
+    }
+}
+
+function enemiesColliding(enemy1, enemy2){
+    console.log("ENEMY COLLISION");
+    enemy1.death();
+    enemy2.death();
+    killEnemy(enemy1);
+    killEnemy(enemy2);
+}
+
+function killEnemy(enemy){
+    enemy.alive = false;
+    index = updatableObjects.indexOf(enemy);
+    if(index > -1){
+        updatableObjects.splice(index, 1);
+    }
+
+    index = bullets.indexOf(enemy);
+    if(index > -1){
+        bullets.splice(index, 1);
+    }
+
+    index = mirrorWalkers.indexOf(enemy);
+    if(index > -1){
+        mirrorWalkers.splice(index, 1);
+    }
+
+    index = enemies.indexOf(enemy);
+    if(index > -1){
+        enemies.splice(index, 1);
+    }
+
+    enemiesLeft --;
 }

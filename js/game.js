@@ -6,13 +6,16 @@ var floor;
 var map;
 var stageClear = [false, false, false, false, false];
 var curLevel = 1;
-var hero;
+var hero = null;
 var enemies = [];
 var onScreenEnemies = [];
 var updatableObjects = []; //objects to be updated on play.update()
 var initiableObjects = []; //objects to be initialized
 var mirrorWalkers = [];
 var bullets = [];
+var door;
+var transitioningLevels;
+var enemiesLeft;
 
 var breadCrumbs = []; // used to track menu navigation
 
