@@ -2,6 +2,7 @@
 function createEnemyFollowHero(_x, _y, _speed){
 	return {
 		"alive":true,
+		"emitter" : null, 
 		"moving" : false,
 		"speed":_speed,
 		"hero":null,
@@ -25,6 +26,10 @@ function createEnemyFollowHero(_x, _y, _speed){
 		},
 		"death" : function(){
 			this.sprite.animations.play('death');
+			this.sprite.alpha = 0.4;
+			this.emitter.x = this.sprite.x;
+			this.emitter.y = this.sprite.y;
+			this.emitter.start(true, 1000, null, 10);
 		},
 		"stop" : function(){
 			if(this.moving){
@@ -51,6 +56,15 @@ function createEnemyFollowHero(_x, _y, _speed){
 		"init" : function(){
 			this.hero = hero;
 			this.createAnimations();
+			this.emitter = game.add.emitter(this.sprite.x, this.sprite.y, 5);
+			this.emitter.makeParticles("smoke", [0, 1, 2]);
+			this.emitter.minParticleScale = 0.5;
+			this.emitter.maxParticleScale = 1;
+			this.emitter.minParticleSpeed.setTo(-10, -10);
+			this.emitter.maxParticleSpeed.setTo(10, 10);
+			this.emitter.gravity = 0;
+			this.emitter.setAlpha(1, 0, 1000, Phaser.Easing.Linear.None, false);
+			this.emitter.autoAlpha = true;
 		}
 	};
 }

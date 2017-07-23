@@ -5,6 +5,7 @@ function createEnemyBullet(_x, _y, _speed){
 		"moving" : false,
 		"sprite":null,
 		"alive": true,
+		"emitter": null,
 		"createAnimations": function(){
 			this.sprite = game.add.sprite(_x, _y, "enemy_bullet");
 			this.sprite.x += (this.sprite.width / 2);
@@ -47,10 +48,24 @@ function createEnemyBullet(_x, _y, _speed){
 			this.createAnimations();
 			this.rotate();
 			this.sprite.visible = true;
+			this.emitter = game.add.emitter(this.sprite.x, this.sprite.y, 5);
+			this.emitter.makeParticles("smoke", [0, 1, 2]);
+			this.emitter.minParticleScale = 0.5;
+			this.emitter.maxParticleScale = 1;
+			this.emitter.minParticleSpeed.setTo(-10, -10);
+			this.emitter.maxParticleSpeed.setTo(10, 10);
+			this.emitter.gravity = 0;
+			this.emitter.setAlpha(1, 0, 1000, Phaser.Easing.Linear.None, false);
+			this.emitter.autoAlpha = true;
 		},
 		"death": function(){
 			this.animations.play("death");
+			this.sprite.alpha = 0.4;
 			this.alive = false;
+			this.emitter.x = this.sprite.x;
+			this.emitter.y = this.sprite.y;
+			this.emitter.start(true, 1000, null, 10);
+			
 		}
 	}
 }

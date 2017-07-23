@@ -6,6 +6,7 @@ function createEnemyMirrorWalker(_hero, _mirrorAxis){
 		"sprite":null,
 		"dummy":null,
 		"alive":true,
+		"emitter" : null,
 		"createDummy": function(){
 			this.dummy = game.add.sprite(0, 0, "enemy_mirror_walk");
 			this.dummy.visible = false;
@@ -86,11 +87,24 @@ function createEnemyMirrorWalker(_hero, _mirrorAxis){
 			this.createAnimations();
 			this.createDummy();
 			this.placeOnScreen();
+			this.emitter = game.add.emitter(this.sprite.x, this.sprite.y, 5);
+			this.emitter.makeParticles("smoke", [0, 1, 2]);
+			this.emitter.minParticleScale = 0.5;
+			this.emitter.maxParticleScale = 1;
+			this.emitter.minParticleSpeed.setTo(-10, -10);
+			this.emitter.maxParticleSpeed.setTo(10, 10);
+			this.emitter.gravity = 0;
+			this.emitter.setAlpha(1, 0, 1000, Phaser.Easing.Linear.None, false);
+			this.emitter.autoAlpha = true;
 		},
 		"death": function(){
 			this.sprite.animations.play("death");
 			this.sprite.body.velocity.setTo(0, 0);
 			this.alive = false;
+			this.sprite.alpha = 0.4;
+			this.emitter.x = this.sprite.x;
+			this.emitter.y = this.sprite.y;
+			this.emitter.start(true, 1000, null, 10);
 		}
 	}
 }

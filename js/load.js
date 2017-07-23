@@ -13,6 +13,7 @@ var loadState = {
 		game.load.spritesheet("menu_button", "img/big_button.png", 276, 46);
 		game.load.spritesheet("icons", "img/icons.png", 32, 32);
 		game.load.spritesheet("particles", "img/particles.png", 64, 64);
+		game.load.spritesheet("smoke", "img/smoke.png", 64, 64);
 
 		for(i = 1; i <= 10; i ++){
 			game.load.tilemap("level"+i.toString(), "misc/1-" + i.toString()+".json", null, Phaser.Tilemap.TILED_JSON);
