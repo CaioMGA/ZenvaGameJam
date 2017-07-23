@@ -11,7 +11,6 @@ var playState = {
         enemies.forEach(function(item){console.log(item.sprite.key); item.init()});
         hero.init();
         door.init();
-        game.input.addPointer(); // touchscreen
         createMenuOverlay();
         transitioningLevels = false;
 
@@ -105,6 +104,8 @@ function updateCollisions(){
 
     // Enemies colliding against themselves
     enemies.forEach(function (item1){
+        //enemy collides with hero
+        game.physics.arcade.collide(item1.sprite, hero.sprite, hero.death, null, hero);
         enemies.forEach(function(item2){
             if(item1.alive && item2.alive){
                 game.physics.arcade.collide(item1.sprite, item2.sprite, function(){enemiesColliding(item1, item2)}, null, this);
@@ -117,6 +118,13 @@ function nextLevel(){
     if(!transitioningLevels){
         transitioningLevels = true;
         curLevel++;
+        showPrepareLevel();
+    }
+}
+
+function resetLevel(){
+    if(!transitioningLevels){
+        transitioningLevels = true;
         showPrepareLevel();
     }
 }

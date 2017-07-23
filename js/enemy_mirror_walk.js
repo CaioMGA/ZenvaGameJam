@@ -55,18 +55,23 @@ function createEnemyMirrorWalker(_hero, _mirrorAxis){
 			}
 		},
 		"update" : function(){
-			if(this.alive){
-				if(this.hero.sprite.animations.currentAnim != this.sprite.animations.currentAnim){
-					this.sprite.animations.play(this.hero.sprite.animations.currentAnim.name);
-				}
-				if(this.hero.moving != this.moving){
-					this.moving = this.hero.moving;
-					this.move();
-				}
+			if(hero.alive){
+				if(this.alive){
+					if(this.hero.sprite.animations.currentAnim != this.sprite.animations.currentAnim){
+						this.sprite.animations.play(this.hero.sprite.animations.currentAnim.name);
+					}
+					if(this.hero.moving != this.moving){
+						this.moving = this.hero.moving;
+						this.move();
+					}
 
-				if(this.moving){
-					this.move();
+					if(this.moving){
+						this.move();
+					}
 				}
+			} else {
+				this.sprite.body.velocity.setTo(0, 0);
+				this.sprite.animations.play("idle");
 			}
 		},
 		"placeOnScreen": function(){

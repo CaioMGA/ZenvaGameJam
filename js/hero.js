@@ -29,7 +29,14 @@ function createHero(_x, _y, _speed){
 
 		},
 		"death" : function(){
-			this.sprite.animations.play('death');
+			if(this.alive){
+				this.sprite.animations.play('death');
+				this.alive = false;
+				this.sprite.body.velocity.setTo(0, 0);
+				this.target.hide();
+				//reset game in 4 seconds
+			}
+			
 		},
 		"walk" : function(direction){
 			this.sprite.animations.play('walkH');
@@ -49,7 +56,10 @@ function createHero(_x, _y, _speed){
 			this.sprite.animations.play('victory');
 		},
 		"update" : function(){
-			this.move();
+			if(this.alive){
+				this.move();
+			}
+			
 		},
 		"move" : function(){
 			if(this.moving){
@@ -65,23 +75,24 @@ function createHero(_x, _y, _speed){
 	    	}
 		},
 		"setTarget" : function (_x, _y){
-			//prevents target being created outside the game screen
-			
-			this.target.set(_x, _y);
-			this.moving = true;
-			//
+			if(this.alive){
+				//prevents target being created outside the game screen
+				this.target.set(_x, _y);
+				this.moving = true;
+				//
 
-			if(Math.abs(this.sprite.x - this.target.sprite.x) >= Math.abs(this.sprite.y - this.target.sprite.y)){
-				if(this.sprite.x > this.target.sprite.x){
-					this.walk(-1);
+				if(Math.abs(this.sprite.x - this.target.sprite.x) >= Math.abs(this.sprite.y - this.target.sprite.y)){
+					if(this.sprite.x > this.target.sprite.x){
+						this.walk(-1);
+					} else {
+						this.walk(1);
+					}
 				} else {
-					this.walk(1);
-				}
-			} else {
-				if(this.sprite.y > this.target.sprite.y){
-					this.walkUp();
-				} else {
-					this.walkDown();
+					if(this.sprite.y > this.target.sprite.y){
+						this.walkUp();
+					} else {
+						this.walkDown();
+					}
 				}
 			}
 		},
@@ -89,6 +100,7 @@ function createHero(_x, _y, _speed){
 			this.createAnimations();
 			this.createTarget();
 			this.target.init();
+			this.alive = true;
 		}
 	};
 }

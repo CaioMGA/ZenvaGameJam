@@ -1,12 +1,6 @@
 var prepareLevelState = {
 	preload : function(){
 		map = game.add.tilemap("level" + curLevel.toString());
-		//createScenary();
-
-		//load hero from map
-		//hero = createHero(64, 64, 200);
-		//hero.init();
-		//updatableObjects.push(hero);
 
 		updatableObjects = [];
 
@@ -34,6 +28,7 @@ var prepareLevelState = {
 		});
 
 		//load enemies and put them inside onScreenEnemies
+		enemies = [];
 
 		tmpEnemies = game.add.group();
 		map.createFromObjects("Enemies", "fly", "enemy_follow_hero", 0, true, false, tmpEnemies);
