@@ -11,6 +11,7 @@ var loadState = {
 		game.load.spritesheet("door", "img/door.png", 32, 32);
 		game.load.spritesheet("button", "img/small_button.png", 32, 32);
 		game.load.spritesheet("menu_button", "img/big_button.png", 276, 46);
+		game.load.spritesheet("medium_button", "img/medium_button.png", 96, 96);
 		game.load.spritesheet("icons", "img/icons.png", 32, 32);
 		game.load.spritesheet("particles", "img/particles.png", 64, 64);
 		game.load.spritesheet("smoke", "img/smoke.png", 64, 64);
@@ -19,8 +20,13 @@ var loadState = {
 			game.load.tilemap("level"+i.toString(), "misc/1-" + i.toString()+".json", null, Phaser.Tilemap.TILED_JSON);
 		}
 
-		//game.load.tilemap("level1", "misc/1-1.json", null, Phaser.Tilemap.TILED_JSON);
 		game.load.image("tiles", "img/tiles_purple.png");
+
+		game.load.audio("enemy_death", "snd/enemydeath.ogg");
+		game.load.audio("enemy_stop", "snd/flystop.ogg");
+		game.load.audio("success", "snd/success.ogg");
+		game.load.audio("you_lose", "snd/youlose.ogg");
+		game.load.audio("player_walk", "snd/playerwalk.ogg");
 
 	},
 	create: function(){

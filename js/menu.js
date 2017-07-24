@@ -76,3 +76,7 @@ function showTitleScreen(){
 	game.state.start("titleScreen");
 	breadCrumbs = [];
 }
+
+function resumeGame(){
+	game.state.start("play");
+}

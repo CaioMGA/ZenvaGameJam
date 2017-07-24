@@ -34,6 +34,8 @@ function createHero(_x, _y, _speed){
 				this.alive = false;
 				this.sprite.body.velocity.setTo(0, 0);
 				this.target.hide();
+				fxPlayerWalking.stop();
+				fxDeadPlayer.play();
 				//reset game in 4 seconds
 			}
 			
@@ -68,6 +70,7 @@ function createHero(_x, _y, _speed){
 		            this.sprite.x = this.target.sprite.x;
 		            this.sprite.y = this.target.sprite.y;
 		            this.moving = false;
+		            fxPlayerWalking.stop();
 		            this.sprite.body.velocity.setTo(0, 0);
 		            this.stop();
 		            this.target.hide();
@@ -78,7 +81,13 @@ function createHero(_x, _y, _speed){
 			if(this.alive){
 				//prevents target being created outside the game screen
 				this.target.set(_x, _y);
-				this.moving = true;
+				if(!this.moving){
+					this.moving = true;
+					if(!fxPlayerWalking.isPlaying){
+						fxPlayerWalking.loopFull(fxPlayerWalking.volume);
+					}
+				}
+				
 				//
 
 				if(Math.abs(this.sprite.x - this.target.sprite.x) >= Math.abs(this.sprite.y - this.target.sprite.y)){
@@ -100,7 +109,10 @@ function createHero(_x, _y, _speed){
 			this.createAnimations();
 			this.createTarget();
 			this.target.init();
+			this.sprite.x = heroDeploy.x;
+			this.sprite.y = heroDeploy.y;
 			this.alive = true;
+			this.moving = false;
 		}
 	};
 }

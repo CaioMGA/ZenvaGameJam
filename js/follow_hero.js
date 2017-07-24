@@ -30,12 +30,15 @@ function createEnemyFollowHero(_x, _y, _speed){
 			this.emitter.x = this.sprite.x;
 			this.emitter.y = this.sprite.y;
 			this.emitter.start(true, 1000, null, 10);
+			fxDeadEnemy.play();
+			this.sprite.body.velocity.setTo(0, 0);
 		},
 		"stop" : function(){
 			if(this.moving){
 				this.sprite.animations.play('idle');
 				this.sprite.body.velocity.setTo(0, 0);
 				this.moving = false;
+				fxEnemyFollowPlayerStop.play();
 			}
 		},
 		

@@ -14,6 +14,9 @@ var playState = {
         createMenuOverlay();
         transitioningLevels = false;
 
+        if(!nowPlaying){
+            nowPlaying = true;
+        }
 	},
 
     update: function(){
@@ -118,6 +121,7 @@ function nextLevel(){
     if(!transitioningLevels){
         transitioningLevels = true;
         curLevel++;
+        stopAllSounds();
         showPrepareLevel();
     }
 }
@@ -125,6 +129,7 @@ function nextLevel(){
 function resetLevel(){
     if(!transitioningLevels){
         transitioningLevels = true;
+        stopAllSounds();
         showPrepareLevel();
     }
 }

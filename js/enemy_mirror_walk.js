@@ -110,6 +110,7 @@ function createEnemyMirrorWalker(_hero, _mirrorAxis){
 			this.emitter.x = this.sprite.x;
 			this.emitter.y = this.sprite.y;
 			this.emitter.start(true, 1000, null, 10);
+			fxDeadEnemy.play();
 		}
 	}
 }

@@ -1,5 +1,7 @@
 var titleScreenState = {
 	create : function(){
+		nowPlaying = false;
+
 		game.stage.backgroundColor = '#440044';
 		textStyle = { "font":"30px Arial", "fill":"#080808"};
 

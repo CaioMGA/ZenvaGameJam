@@ -10,8 +10,16 @@ Kenney Game Assets
 
     Game icons
 
-============Sounds============
+    Particle pack
 
+    Puzzle Pack II
+
+============Sounds============
+http://freesound.org/people/davidbain/sounds/135831/
+http://freesound.org/people/fins/sounds/171670/
+http://freesound.org/people/thefsoundman/sounds/118513/
+http://freesound.org/people/jeremysykes/sounds/341242/
+http://freesound.org/people/ProjectsU012/sounds/360928/
 ============Music============
 
 ============Thanks============

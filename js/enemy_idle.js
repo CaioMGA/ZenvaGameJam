@@ -23,6 +23,7 @@ function createEnemyIdle(_x, _y){
 			this.emitter.x = this.sprite.x;
 			this.emitter.y = this.sprite.y;
 			this.emitter.start(true, 1000, null, 10);
+			fxDeadEnemy.play();
 		},
 		"init": function(){
 			this.createAnimations();

@@ -17,6 +17,7 @@ function createDoor(_x, _y){
 				this.sprite.animations.play("opened");
 				this.opened = true;
 				this.emitter.start(true, 1000, null, 10);
+				fxDoorOpen.play();
 			}
 		},
 		"init" : function(){

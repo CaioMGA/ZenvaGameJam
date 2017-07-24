@@ -7,6 +7,7 @@ var map;
 var stageClear = [false, false, false, false, false];
 var curLevel = 1;
 var hero = null;
+var heroDeploy = null;
 var enemies = [];
 var onScreenEnemies = [];
 var updatableObjects = []; //objects to be updated on play.update()
@@ -16,6 +17,19 @@ var bullets = [];
 var door;
 var transitioningLevels;
 var enemiesLeft;
+var nowPlaying = false;
+
+var musicLvl = 1;
+var soundLvl = 1;
+var music = null;
+var fxVictory = null;
+var fxDoorOpen = null;
+var fxPlayerWalking = null;
+var fxBulletChangeDirection = null;
+var fxEnemyFollowPlayerChase = null;
+var fxEnemyFollowPlayerStop = null;
+var fxDeadEnemy = null;
+var fxDeadPlayer = null;
 
 var breadCrumbs = []; // used to track menu navigation
 

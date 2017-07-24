@@ -1,5 +1,6 @@
 var prepareLevelState = {
 	preload : function(){
+		createSounds();
 		map = game.add.tilemap("level" + curLevel.toString());
 
 		updatableObjects = [];
@@ -9,9 +10,9 @@ var prepareLevelState = {
 		heroGroup.forEach(function (item) {
 			if(hero == null){
 				hero = createHero(item.position.x + 16, item.position.y + game.camera.y + 16, 200);
+				heroDeploy = {"x": item.x + 16, "y": item.y + game.camera.y + 16};
 			} else {
-				hero.sprite.x = item.position.x + 16;
-				hero.sprite.y = item.position.y + game.camera.y + 16;
+				heroDeploy = {"x": item.x + 16, "y": item.y + game.camera.y + 16};
 			}
 			
 			hero.init(); // some enemies need player info to load, so I init player here and on playState
