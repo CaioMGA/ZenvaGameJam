@@ -49,6 +49,30 @@
                  "width":16,
                  "x":496,
                  "y":208
+                }, 
+                {
+                 "gid":28,
+                 "height":32,
+                 "id":40,
+                 "name":"idle",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":144,
+                 "y":208
+                }, 
+                {
+                 "gid":20,
+                 "height":32,
+                 "id":41,
+                 "name":"fly",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":64,
+                 "y":48
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -90,7 +114,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":40,
+ "nextobjectid":42,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.0.2",
