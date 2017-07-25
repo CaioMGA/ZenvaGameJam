@@ -121,6 +121,7 @@ function updateCollisions(){
 function nextLevel(){
     if(!transitioningLevels){
         transitioningLevels = true;
+        stageUnlocked[curLevel] = true;
         curLevel++;
         stopAllSounds();
         showPrepareLevel();

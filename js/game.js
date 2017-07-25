@@ -4,7 +4,7 @@ var game = new Phaser.Game(640, 360, Phaser.AUTO, 'gameDiv');
 var walls;
 var floor;
 var map;
-var stageClear = [false, false, false, false, false];
+var stageUnlocked = [true, false, false, false, false, false, false, false, false, false];
 var curLevel = 1;
 var hero = null;
 var heroDeploy = null;
@@ -38,6 +38,7 @@ game.state.add('boot', bootState);
 game.state.add('load', loadState);
 game.state.add('prepareLevel', prepareLevelState);
 game.state.add('titleScreen', titleScreenState);
+game.state.add('stageSelect', stageSelectState);
 game.state.add('settings', settingsState);
 game.state.add('play', playState);
 
