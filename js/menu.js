@@ -63,6 +63,7 @@ function showStageSelect(){
 }
 
 function showSettings(){
+	stopAllSounds();
 	game.state.start("settings");
 	breadCrumbs.push(game.state.current);
 }

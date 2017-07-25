@@ -7,6 +7,7 @@ var playState = {
             Phaser.Keyboard.RIGHT,
             Phaser.Keyboard.SPACEBAR]
         );
+        stopAllSounds();
         createScenary();
         enemies.forEach(function(item){console.log(item.sprite.key); item.init()});
         hero.init();
