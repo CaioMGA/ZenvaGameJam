@@ -124,7 +124,11 @@ function nextLevel(){
         stageUnlocked[curLevel] = true;
         curLevel++;
         stopAllSounds();
-        showPrepareLevel();
+        if(curLevel > 10){
+            //show About
+        } else {
+            showPrepareLevel();
+        }
     }
 }
 

@@ -36,6 +36,7 @@ var breadCrumbs = []; // used to track menu navigation
 //GameStates
 game.state.add('boot', bootState);
 game.state.add('load', loadState);
+game.state.add('about', aboutState);
 game.state.add('prepareLevel', prepareLevelState);
 game.state.add('titleScreen', titleScreenState);
 game.state.add('stageSelect', stageSelectState);
