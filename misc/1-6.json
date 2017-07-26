@@ -31,6 +31,14 @@
                  "height":32,
                  "id":39,
                  "name":"mirror",
+                 "properties":
+                    {
+                     "axis":"both"
+                    },
+                 "propertytypes":
+                    {
+                     "axis":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -54,7 +62,15 @@
                  "gid":29,
                  "height":32,
                  "id":43,
-                 "name":"bullet_right",
+                 "name":"bullet",
+                 "properties":
+                    {
+                     "direction":"right"
+                    },
+                 "propertytypes":
+                    {
+                     "direction":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -66,7 +82,15 @@
                  "gid":29,
                  "height":32,
                  "id":44,
-                 "name":"bullet_right",
+                 "name":"bullet",
+                 "properties":
+                    {
+                     "direction":"right"
+                    },
+                 "propertytypes":
+                    {
+                     "direction":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,

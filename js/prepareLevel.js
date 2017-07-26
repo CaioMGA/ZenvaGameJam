@@ -35,6 +35,7 @@ var prepareLevelState = {
 		map.createFromObjects("Enemies", "fly", "enemy_follow_hero", 0, true, false, tmpEnemies);
 		tmpEnemies.forEach(
 			function(item){
+				item.visible = false;
 				enemies.push(createEnemyFollowHero(item.position.x,item.position.y,100));
 			});
 
@@ -43,6 +44,7 @@ var prepareLevelState = {
 		map.createFromObjects("Enemies", "idle", "enemy_idle", 0, true, false, tmpEnemies);
 		tmpEnemies.forEach(
 			function(item){
+				item.visible = false;
 				enemies.push(createEnemyIdle(item.position.x, item.position.y));
 			});
 
@@ -51,16 +53,37 @@ var prepareLevelState = {
 		map.createFromObjects("Enemies", "mirror", "enemy_mirror_walk", 0, true, false, tmpEnemies);
 		tmpEnemies.forEach(
 			function(item){
-				enemies.push(createEnemyMirrorWalker(hero, "both"));
+				item.visible = false;
+				enemies.push(createEnemyMirrorWalker(hero, item.axis));
 			});
+
 
 		tmpEnemies.destroy();
 		tmpEnemies = game.add.group();
 		map.createFromObjects("Enemies", "bullet", "enemy_bullet", 0, true, false, tmpEnemies);
 		tmpEnemies.forEach(
 			function(item){
-				enemies.push(createEnemyBullet(item.position.x, item.position.y, 100))
+				item.visible = false;
+				bullet = createEnemyBullet(item.position.x, item.position.y, 100);
+				if(item.direction == "right"){
+					bullet.direction = {"x":1, "y":0};
+				}
+
+				if(item.direction == "left"){
+					bullet.direction = {"x":-1, "y":0};
+				}
+
+				if(item.direction == "up"){
+					bullet.direction = {"x":0, "y":-1};
+				}
+
+				if(item.direction == "down"){
+					bullet.direction = {"x":0, "y":1};
+				}
+				enemies.push(bullet);
 			});
+
+
         enemiesLeft = 0;
 		enemies.forEach(
 			function(item){

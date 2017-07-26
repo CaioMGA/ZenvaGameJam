@@ -47,6 +47,8 @@ function createEnemyBullet(_x, _y, _speed){
 		"init": function(){
 			this.createAnimations();
 			this.rotate();
+			this.sprite.body.velocity. x = this.direction.x * this.speed;
+			this.sprite.body.velocity. y = this.direction.y * this.speed;
 			this.sprite.visible = true;
 			this.emitter = game.add.emitter(this.sprite.x, this.sprite.y, 5);
 			this.emitter.makeParticles("smoke", [0, 1, 2]);
