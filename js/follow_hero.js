@@ -20,7 +20,7 @@ function createEnemyFollowHero(_x, _y, _speed){
 			game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 
 		    this.sprite.body.collideWorldBounds = true;
-		    this.sprite.body.setSize(24, 24, 20, 10); //tweak for better movement
+		    this.sprite.body.setSize(24, 24, 20, 20);
 		    this.sprite.body.bounce.set(0.05);
 
 		},
@@ -39,6 +39,7 @@ function createEnemyFollowHero(_x, _y, _speed){
 				this.sprite.body.velocity.setTo(0, 0);
 				this.moving = false;
 				fxEnemyFollowPlayerStop.play();
+				this.sprite.body.setSize(24, 24, 20, 20);
 			}
 		},
 		
@@ -48,6 +49,7 @@ function createEnemyFollowHero(_x, _y, _speed){
 		"move" : function(){
 			if(this.hero.moving){
 				if(!this.moving){
+					this.sprite.body.setSize(24, 24, 20, 10);
 					this.moving = true;
 					this.sprite.animations.play('move');
 				}
