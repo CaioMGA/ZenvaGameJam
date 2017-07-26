@@ -59,7 +59,7 @@ function createEnemyBullet(_x, _y, _speed){
 			this.emitter.autoAlpha = true;
 		},
 		"death": function(){
-			this.animations.play("death");
+			this.sprite.animations.play("death");
 			this.sprite.alpha = 0.4;
 			this.alive = false;
 			this.emitter.x = this.sprite.x;
