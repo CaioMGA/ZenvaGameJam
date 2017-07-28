@@ -125,7 +125,7 @@ function nextLevel(){
         curLevel++;
         stopAllSounds();
         if(curLevel > 10){
-            //show About
+            showGameover();
         } else {
             showPrepareLevel();
         }

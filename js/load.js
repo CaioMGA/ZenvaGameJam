@@ -30,6 +30,7 @@ var loadState = {
 		game.load.audio("you_lose", "snd/youlose.ogg");
 		game.load.audio("player_walk", "snd/playerwalk.ogg");
 
+		createSounds();
 	},
 	create: function(){
 		showTitleScreen();

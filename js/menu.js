@@ -69,8 +69,14 @@ function showSettings(){
 }
 
 function showAbout(){
+	stopAllSounds();
 	game.state.start("about");
 	breadCrumbs.push(game.state.current);
+}
+
+function showGameover(){
+	stopAllSounds();
+	game.state.start("gameover");
 }
 
 function showTitleScreen(){
