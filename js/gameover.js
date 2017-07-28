@@ -1,5 +1,6 @@
 var gameoverState = {
 	create: function(){
+		curLevel = 1;
 		title = game.add.text(game.world.width/2, 100, "G A M E    O V E R", {font:"50px Arial", fill:"#ffffff", stroke:"#000000", strokeThickness:10});
 		title.anchor.setTo(0.5, 0.5);
 		msg = game.add.text(game.world.width/2, 250, "Congratulations! You beat the game!", {font:"20px Arial", fill:"#ffffff", stroke:"#000000", strokeThickness:5});

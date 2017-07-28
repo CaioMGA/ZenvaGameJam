@@ -19,8 +19,8 @@ var transitioningLevels;
 var enemiesLeft;
 var nowPlaying = false;
 
-var musicLvl = 1;
-var soundLvl = 1;
+var musicLvl = 1.0;
+var soundLvl = 1.0;
 var music = null;
 var fxVictory = null;
 var fxDoorOpen = null;
