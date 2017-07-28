@@ -25,38 +25,35 @@ var settingsState = {
 			title.anchor.setTo(0.5, 0.5);
 		}
 		
-		if(!playerLost){
-			//Sound settings
-			btnSoundMinus = game.add.button((game.world.width / 2) - 120, 195, "button", soundMinus, this, 1,2,0);
-			btnSoundMinus.anchor.setTo(0.5, 0.5);
-			txtSoundMinus = game.add.text((game.world.width / 2) - 120, 195, "-", textStyle);
-			txtSoundMinus.anchor.setTo(0.5, 0.5);
+		//Sound settings
+		btnSoundMinus = game.add.button((game.world.width / 2) - 120, 195, "button", soundMinus, this, 1,2,0);
+		btnSoundMinus.anchor.setTo(0.5, 0.5);
+		txtSoundMinus = game.add.text((game.world.width / 2) - 120, 195, "-", textStyle);
+		txtSoundMinus.anchor.setTo(0.5, 0.5);
 
-			txtSoundLabel = game.add.text((game.world.width / 2), 195, "Sound " + (soundLvl * 100).toFixed(0) + "%", labelStyle);
-			txtSoundLabel.anchor.setTo(0.5, 0.5);
+		txtSoundLabel = game.add.text((game.world.width / 2), 195, "Sound " + (soundLvl * 100).toFixed(0) + "%", labelStyle);
+		txtSoundLabel.anchor.setTo(0.5, 0.5);
 
-			btnSoundPlus = game.add.button((game.world.width / 2) + 120, 195, "button", soundPlus, this, 1,2,0);
-			btnSoundPlus.anchor.setTo(0.5, 0.5);
-			txtSoundPlus = game.add.text((game.world.width / 2) + 120, 195, "+", textStyle);
-			txtSoundPlus.anchor.setTo(0.5, 0.5);
+		btnSoundPlus = game.add.button((game.world.width / 2) + 120, 195, "button", soundPlus, this, 1,2,0);
+		btnSoundPlus.anchor.setTo(0.5, 0.5);
+		txtSoundPlus = game.add.text((game.world.width / 2) + 120, 195, "+", textStyle);
+		txtSoundPlus.anchor.setTo(0.5, 0.5);
 
-			//Music settings
-			/*
-			btnMusMinus = game.add.button((game.world.width / 2) - 120, 255, "button", musMinus, this, 1,2,0);
-			btnMusMinus.anchor.setTo(0.5, 0.5);
-			txtMusMinus = game.add.text((game.world.width / 2) - 120, 255, "-", textStyle);
-			txtMusMinus.anchor.setTo(0.5, 0.5);
+		//Music settings
+		/*
+		btnMusMinus = game.add.button((game.world.width / 2) - 120, 255, "button", musMinus, this, 1,2,0);
+		btnMusMinus.anchor.setTo(0.5, 0.5);
+		txtMusMinus = game.add.text((game.world.width / 2) - 120, 255, "-", textStyle);
+		txtMusMinus.anchor.setTo(0.5, 0.5);
 
-			txtMusLabel = game.add.text((game.world.width / 2), 255, "Music" + (musicLvl * 100).toFixed(0) + "%", labelStyle);
-			txtMusLabel.anchor.setTo(0.5, 0.5);
+		txtMusLabel = game.add.text((game.world.width / 2), 255, "Music" + (musicLvl * 100).toFixed(0) + "%", labelStyle);
+		txtMusLabel.anchor.setTo(0.5, 0.5);
 
-			btnMusPlus = game.add.button((game.world.width / 2) + 120, 255, "button", musPlus, this, 1,2,0);
-			btnMusPlus.anchor.setTo(0.5, 0.5);
-			txtMusPlus = game.add.text((game.world.width / 2) + 120, 255, "+", textStyle);
-			txtMusPlus.anchor.setTo(0.5, 0.5);
-			*/
-
-		}
+		btnMusPlus = game.add.button((game.world.width / 2) + 120, 255, "button", musPlus, this, 1,2,0);
+		btnMusPlus.anchor.setTo(0.5, 0.5);
+		txtMusPlus = game.add.text((game.world.width / 2) + 120, 255, "+", textStyle);
+		txtMusPlus.anchor.setTo(0.5, 0.5);
+		*/
 		if(!nowPlaying){
 			btnBack = game.add.button((game.world.width / 2), 315, "menu_button", goBack, this, 1,2,0);
 			btnBack.anchor.setTo(0.5, 0.5);
