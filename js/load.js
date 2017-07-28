@@ -3,6 +3,7 @@ var loadState = {
 		var loadingLabel = game.add.text(80, 150, 'loading...', {font: '30px Courier', fill:'#ffffff'});
 
 		game.load.image("locked", "img/locked.png");
+		game.load.image("link_button", "img/link_button_image.png");
 		game.load.spritesheet("hero_spritesheet", "img/hero_spritesheet.png", 32, 32);
 		game.load.spritesheet("targetIndicator", "img/cursorIcons.png", 32, 32);
 		game.load.spritesheet("enemy_bullet", "img/enemy_bullet.png", 46, 32);
