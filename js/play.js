@@ -109,7 +109,7 @@ function updateCollisions(){
     // Enemies colliding against themselves
     enemies.forEach(function (item1){
         //enemy collides with hero
-        game.physics.arcade.collide(item1.sprite, hero.sprite, hero.death, null, hero);
+        game.physics.arcade.collide(item1.sprite, hero.sprite, nextTry, null, hero);
         enemies.forEach(function(item2){
             if(item1.alive && item2.alive){
                 game.physics.arcade.collide(item1.sprite, item2.sprite, function(){enemiesColliding(item1, item2)}, null, this);
@@ -171,4 +171,13 @@ function killEnemy(enemy){
     }
 
     enemiesLeft --;
+}
+
+function nextTry(){
+    if(hero.alive){
+        hero.death();
+        playerLost = true;
+        game.time.events.add(Phaser.Timer.SECOND * 3, showSettings, this)
+    }
+    
 }

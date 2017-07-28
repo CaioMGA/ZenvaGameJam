@@ -1,6 +1,7 @@
 var prepareLevelState = {
 	preload : function(){
 		createSounds();
+		playerLost = false;
 		map = game.add.tilemap("level" + curLevel.toString());
 
 		updatableObjects = [];

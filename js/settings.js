@@ -7,7 +7,11 @@ var settingsState = {
 		if(nowPlaying){
 			btnPlay = game.add.button((game.world.width / 2), 75, "menu_button", showPrepareLevel, this, 1,2,0);
 			btnPlay.anchor.setTo(0.5, 0.5);
-			txtPlay = game.add.text((game.world.width / 2), 75, "Restart", textStyle);
+			if(playerLost){
+				txtPlay = game.add.text((game.world.width / 2), 75, "Retry", textStyle);
+			} else {
+				txtPlay = game.add.text((game.world.width / 2), 75, "Restart", textStyle);
+			}
 			txtPlay.anchor.setTo(0.5, 0.5);
 		}
 		

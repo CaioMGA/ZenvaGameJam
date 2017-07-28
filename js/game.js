@@ -31,6 +31,8 @@ var fxEnemyFollowPlayerStop = null;
 var fxDeadEnemy = null;
 var fxDeadPlayer = null;
 
+var playerLost = false;
+
 var breadCrumbs = []; // used to track menu navigation
 
 //GameStates
