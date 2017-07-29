@@ -1,21 +1,21 @@
 CREDITS
 
 ============Sprites============
-Kenney Game Assets
-    Abstract Platformer Pack
-    https://kenney.nl/assets/abstract-platformer
+	Kenney Game Assets
+	    Abstract Platformer Pack
+	    https://kenney.nl/assets/abstract-platformer
 
-    Roguelike/RPG pack
-    https://kenney.nl/assets/roguelike-rpg-pack
+	    Roguelike/RPG pack
+	    https://kenney.nl/assets/roguelike-rpg-pack
 
-    Game icons
-    https://kenney.nl/assets/game-icons
+	    Game icons
+	    https://kenney.nl/assets/game-icons
 
-    Smoke Particles
-    https://kenney.nl/assets/smoke-particles
+	    Smoke Particles
+	    https://kenney.nl/assets/smoke-particles
 
-    Puzzle Pack II
-    https://kenney.nl/assets/puzzle-pack-2
+	    Puzzle Pack II
+	    https://kenney.nl/assets/puzzle-pack-2
 
 ============Sounds============
 http://freesound.org/people/davidbain/sounds/135831/
