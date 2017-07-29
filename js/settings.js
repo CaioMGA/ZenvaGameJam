@@ -1,6 +1,7 @@
 var settingsState = {
 	create : function(){
 		game.stage.backgroundColor = '#440044';
+		createSounds();
 		textStyle = { "font":"30px Arial", "fill":"#080808"};
 		labelStyle = { "font":"28px Arial", "fill":"#080808", "stroke":"#ffffff", "strokeThickness":4};
 
@@ -89,6 +90,10 @@ function soundMinus(){
 		soundLvl = 0;
 	}
 	setSoundLevels(soundLvl);
+	//fxEnemyFollowPlayerStop.stop();
+	//fxEnemyFollowPlayerStop.play();
+	fxPlayerWalking.stop();
+	fxPlayerWalking.play();
 	txtSoundLabel.text = "Sound " + (soundLvl * 100).toFixed(0) + "%";
 }
 
@@ -98,6 +103,10 @@ function soundPlus(){
 		soundLvl = 1;
 	}
 	setSoundLevels(soundLvl);
+	//fxEnemyFollowPlayerStop.stop();
+	//fxEnemyFollowPlayerStop.play();
+	fxPlayerWalking.stop();
+	fxPlayerWalking.play();
 	txtSoundLabel.text = "Sound " + (soundLvl * 100).toFixed(0) + "%";
 }
 
