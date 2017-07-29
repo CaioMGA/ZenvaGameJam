@@ -3,16 +3,19 @@ CREDITS
 ============Sprites============
 Kenney Game Assets
     Abstract Platformer Pack
-    - Red Player (Edited by Caio Marchi)
-    - Enemy Walking (Edited by Caio Marchi)
+    https://kenney.nl/assets/abstract-platformer
 
-    Rogue-like Pack
+    Roguelike/RPG pack
+    https://kenney.nl/assets/roguelike-rpg-pack
 
     Game icons
+    https://kenney.nl/assets/game-icons
 
-    Particle pack
+    Smoke Particles
+    https://kenney.nl/assets/smoke-particles
 
     Puzzle Pack II
+    https://kenney.nl/assets/puzzle-pack-2
 
 ============Sounds============
 http://freesound.org/people/davidbain/sounds/135831/
@@ -20,9 +23,11 @@ http://freesound.org/people/fins/sounds/171670/
 http://freesound.org/people/thefsoundman/sounds/118513/
 http://freesound.org/people/jeremysykes/sounds/341242/
 http://freesound.org/people/ProjectsU012/sounds/360928/
+
 ============Music============
 
 ============Thanks============
+Sophia, for playtesting
 
 ============Inspiration============
 Adventure of Lolo (NES)
