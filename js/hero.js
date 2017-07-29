@@ -37,6 +37,7 @@ function createHero(_x, _y, _speed){
 				this.target.hide();
 				fxPlayerWalking.stop();
 				fxDeadPlayer.play();
+
 			}
 			
 		},
@@ -53,6 +54,7 @@ function createHero(_x, _y, _speed){
 		"stop" : function(){
 			this.moving = false;
 			this.sprite.animations.play('idle');
+			this.changedPosition = false;
 		},
 		"victory" : function(){
 			this.sprite.animations.play('victory');
@@ -121,6 +123,7 @@ function createHero(_x, _y, _speed){
 			this.sprite.y = heroDeploy.y;
 			this.alive = true;
 			this.moving = false;
+			this.changedPosition = false;
 		}
 	};
 }
