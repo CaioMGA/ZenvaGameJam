@@ -7,6 +7,7 @@ function createHero(_x, _y, _speed){
 		"direction" : {"x":1, "y":0},
 		"target":null,
 		"sprite" : null,
+		"changedPosition":false,
 		"createTarget": function(){
 			this.target = createTarget();
 		},
@@ -36,7 +37,6 @@ function createHero(_x, _y, _speed){
 				this.target.hide();
 				fxPlayerWalking.stop();
 				fxDeadPlayer.play();
-				//reset game in 4 seconds
 			}
 			
 		},
@@ -60,6 +60,11 @@ function createHero(_x, _y, _speed){
 		"update" : function(){
 			if(this.alive){
 				this.move();
+				if(this.changedPosition){
+					if(!fxPlayerWalking.isPlaying){
+						fxPlayerWalking.loopFull(fxPlayerWalking.volume);
+					}
+				}
 			}
 			
 		},
@@ -74,6 +79,11 @@ function createHero(_x, _y, _speed){
 		            this.sprite.body.velocity.setTo(0, 0);
 		            this.stop();
 		            this.target.hide();
+		            
+		        } else {
+		        	if(!this.changedPosition){
+		        		this.changedPosition = true;
+		        	}
 		        }
 	    	}
 		},
@@ -83,9 +93,7 @@ function createHero(_x, _y, _speed){
 				this.target.set(_x, _y);
 				if(!this.moving){
 					this.moving = true;
-					if(!fxPlayerWalking.isPlaying){
-						fxPlayerWalking.loopFull(fxPlayerWalking.volume);
-					}
+					this.changedPosition = false;
 				}
 				
 				//
