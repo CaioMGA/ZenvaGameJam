@@ -31,9 +31,14 @@ var stageSelectState = {
 			tmpX += 128;
 		}
 
-		btnBack = game.add.button((game.world.width / 2), 315, "menu_button", goBack, this, 1,2,0);
+		btnUnlock = game.add.button((game.world.width / 2) - 140, 315, "menu_button", unlockAllStages, this, 1,2,0);
+		btnUnlock.anchor.setTo(0.5, 0.5);
+		txtUnlock = game.add.text((game.world.width / 2) - 140, 315, "Unlock All Stages", textStyle);
+		txtUnlock.anchor.setTo(0.5, 0.5);
+
+		btnBack = game.add.button((game.world.width / 2) + 140, 315, "menu_button", goBack, this, 1,2,0);
 		btnBack.anchor.setTo(0.5, 0.5);
-		txtBack = game.add.text((game.world.width / 2), 315, "Back", textStyle);
+		txtBack = game.add.text((game.world.width / 2) + 140, 315, "Back", textStyle);
 		txtBack.anchor.setTo(0.5, 0.5);
 	}
 	
@@ -46,4 +51,11 @@ function stageSelected(stageNum){
 	} else {
 		fxEnemyFollowPlayerStop.play();
 	}
+}
+
+function unlockAllStages(){
+	for(i = 0; i < 10; i++){
+		stageUnlocked[i] = true;
+	}
+	game.state.start("stageSelect");
 }
